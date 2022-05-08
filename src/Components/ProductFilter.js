@@ -11,9 +11,9 @@ const ProductFilter = (props) => {
             <label>Filter by year </label>
             <select value={props.sellectedCategory} onChange={dropDownChangeHandler}>
                 <option value='All'>Hepsi</option>
-                <option value='ev'>ev</option>
-                <option value='yemek'>yemek</option>
-                <option value='arac'>arac</option>
+                <option value='Asus'>Asus</option>
+                <option value='Monster'>Monster</option>
+                <option value='Apple'>Apple</option>
             </select>
     </div>
 }
