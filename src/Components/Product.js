@@ -2,11 +2,11 @@ import React from "react";
 import "./Product.css"
 
 const Product = (props) => {
-
+    console.log(props.imageRef)
     return <div className="product">
 
         <div className="colorise">
-            <image>Image Area</image>
+
         </div>
         <div className="product__description">
             <div className="product__description_header"> {props.title}</div>
