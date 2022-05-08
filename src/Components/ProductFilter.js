@@ -8,7 +8,7 @@ const ProductFilter = (props) => {
     }
     return <div >
 
-            <label>Filter by year </label>
+            <label>Computer Type </label>
             <select value={props.sellectedCategory} onChange={dropDownChangeHandler}>
                 <option value='All'>Hepsi</option>
                 <option value='Asus'>Asus</option>

@@ -1,34 +1,57 @@
 import React, {useState} from "react";
 import Product from "./Product";
 import ProductFilter from "./ProductFilter";
+import ProductSorter from "./ProductSorter";
 
 const Products = (props) => {
     const [filtredCategory, setFiltredCategory] = useState('All')
-    const categories = props.itemDatas.map((itemdata) => itemdata.category)
-
+    const [sortingType, setsortingType] = useState('None')
     const filterChangeHandler = Category => {
         console.log(Category);
         setFiltredCategory(Category);
     }
-    const filtredDatas = () => {
-        return props.itemDatas.filter(itemdata => {
-            if (filtredCategory == "All") return true;
-            if (itemdata.category == filtredCategory) {
-                return true
-            }
-        }).map((itemData) => {
-            return (
-
-                <div key={itemData.id}><Product id={itemData.id} title={itemData.title} price={itemData.amount} imageRef={itemData.imageRef}/>
-                </div>)
-        });
+    const sortingChangeHandler = Type => {
+        console.log(Type);
+        setsortingType(Type);
     }
+
+
+    const rawData = props.itemDatas
+
+    const filteredData = props.itemDatas.filter(itemdata => {
+        if (filtredCategory == "All") return true;
+        if (itemdata.category == filtredCategory) {
+            return true
+        }
+    })
+
+    const sortedData = () => {
+        if (sortingType === "None") {
+        }
+        if (sortingType === "expensive to cheap") {
+            filteredData.sort((item1, item2) => item1.amount > item2.amount ? -1 : 1)
+        }
+        if (sortingType === "cheap to expensive") {
+            filteredData.sort((item1, item2) => item1.amount > item2.amount ? 1 : -1)
+        }
+        return filteredData
+    }
+    console.log(sortedData())
+
+    const showedDatas = sortedData()
+    const showableProduct = () => showedDatas.map((itemData) => {
+        return (
+            <div key={itemData.id}><Product id={itemData.id} title={itemData.title} price={itemData.amount}
+                                            imageRef={itemData.imageRef}/>
+            </div>)
+    });
     if (props.itemDatas.length === 0) {
         return <h2 className='expenses-list__fallback'>No expenses found</h2>;
     }
     return (<div>
+        <ProductSorter SortingType={sortingType} onSortFuction={sortingChangeHandler}/>
         <ProductFilter sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/>
-        {filtredDatas()}
+        {showableProduct()}
     < /div>)
 }
 

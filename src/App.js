@@ -3,13 +3,13 @@ import './App.css';
 import Products from './Components/Products'
 import "./Components/Products.css"
 import React from "react";
-import Photo from "./images/Asus X515JA.jpg"
-import Photo1 from './images/Asus X515JA.jpg'
-import Photo2 from './images/AsusTuf.jpg'
-import Photo3 from './images/Monster Abra A5.jpg'
-import Photo4 from './images/Monster300hz.jpg'
-import Photo5 from './images/AppleMacbookAir.jpg'
-import Photo6 from './images/AppleMacbookAir.jpg'
+import Photo from "./Components/src/images/Asus X515JA.jpg"
+import Photo1 from './Components/src/images/Asus X515JA.jpg'
+import Photo2 from './Components/src/images/AsusTuf.jpg'
+import Photo3 from './Components/src/images/Monster Abra A5.jpg'
+import Photo4 from './Components/src/images/Monster300hz.jpg'
+import Photo5 from './Components/src/images/AppleMacbookAir.jpg'
+import Photo6 from './Components/src/images/AppleMacbookAir16gb.jpg'
 const DUMMY_PRODUCT_DATAS = [
     {
         id: "1",
@@ -115,7 +115,7 @@ const App = () => {
 
     return (
         <div className="products">
-            <img src={require('./images/Asus X515JA.jpg')} height="200" width="200"/>
+            <img src={require('./Components/src/images/Asus X515JA.jpg')} height="200" width="200"/>
             <Products itemDatas={DUMMY_PRODUCT_DATAS}/>
         </div>
     );
