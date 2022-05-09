@@ -5,6 +5,7 @@ const Cart = () => {
     return <div className="Cart">
         <CartHeader/>
         <OrderSorter/>
+        <button>Öde</button>
     </div>
 }
 
