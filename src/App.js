@@ -10,10 +10,12 @@ import Photo3 from './Components/src/images/Monster Abra A5.jpg'
 import Photo4 from './Components/src/images/Monster300hz.jpg'
 import Photo5 from './Components/src/images/AppleMacbookAir.jpg'
 import Photo6 from './Components/src/images/AppleMacbookAir16gb.jpg'
+import Cart from "./Components/Cart/Cart";
+
 const DUMMY_PRODUCT_DATAS = [
     {
         id: "1",
-        imageRef: 'src/images/Asus X515JA.jpg',
+        imageRef: './Components/src/images/Asus X515JA.jpg',
         title: "Asus X515JA 10.Nesil Core i5 1035G1-8Gb-256Gb Ssd-15.6inc-W11",
         category: "Asus",
         amount: 6.999,
@@ -114,11 +116,17 @@ const App = () => {
 
 
     return (
-        <div className="products">
+        <div>
             <img src={require('./Components/src/images/Asus X515JA.jpg')} height="200" width="200"/>
-            <Products itemDatas={DUMMY_PRODUCT_DATAS}/>
+            <div className="parent">
+                <div className="child1"><Products itemDatas={DUMMY_PRODUCT_DATAS}/></div>
+                <div className="child2"><Cart/></div>
+
+
+            </div>
         </div>
-    );
+    )
+        ;
 }
 
 export default App;

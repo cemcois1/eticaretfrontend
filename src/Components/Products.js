@@ -49,8 +49,10 @@ const Products = (props) => {
         return <h2 className='expenses-list__fallback'>No expenses found</h2>;
     }
     return (<div>
-        <ProductSorter SortingType={sortingType} onSortFuction={sortingChangeHandler}/>
-        <ProductFilter sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/>
+        <div className="parent">
+        <div><ProductSorter SortingType={sortingType} onSortFuction={sortingChangeHandler}/></div>
+        <div><ProductFilter sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/></div>
+        </div>
         {showableProduct()}
     < /div>)
 }
