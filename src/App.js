@@ -3,13 +3,6 @@ import './App.css';
 import Products from './Components/Products'
 import "./Components/Products.css"
 import React from "react";
-import Photo from "./Components/src/images/Asus X515JA.jpg"
-import Photo1 from './Components/src/images/Asus X515JA.jpg'
-import Photo2 from './Components/src/images/AsusTuf.jpg'
-import Photo3 from './Components/src/images/Monster Abra A5.jpg'
-import Photo4 from './Components/src/images/Monster300hz.jpg'
-import Photo5 from './Components/src/images/AppleMacbookAir.jpg'
-import Photo6 from './Components/src/images/AppleMacbookAir16gb.jpg'
 import Cart from "./Components/Cart/Cart";
 
 const DUMMY_PRODUCT_DATAS = [
@@ -117,7 +110,6 @@ const App = () => {
 
     return (
         <div>
-            <img src={require('./Components/src/images/Asus X515JA.jpg')} height="200" width="200"/>
             <div className="parent">
                 <div className="child1"><Products itemDatas={DUMMY_PRODUCT_DATAS}/></div>
                 <div className="child2"><Cart/></div>
