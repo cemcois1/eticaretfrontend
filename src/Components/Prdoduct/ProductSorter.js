@@ -6,7 +6,7 @@ const ProductSorter = (props) => {
 
     }
     return <div>
-        <label>Sort by </label>
+        <label> Money </label>
         <select value={props.sellectedCategory} onChange={dropDownChangeHandler}>
             <option value='None'> None</option>
             <option value='expensive to cheap'>Expensive to cheap</option>

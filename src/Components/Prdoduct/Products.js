@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import Product from "./Product";
-import ProductFilter from "./ProductFilter";
+import ProductSearcher from "./ProductSearcher";
 import ProductSorter from "./ProductSorter";
+import ProductCategoriser from "./ProductCategoriser";
 
 const Products = (props) => {
     const [filtredCategory, setFiltredCategory] = useState('')
     const filterChangeHandler = Category => {
-        console.log(Category);
         setFiltredCategory(Category);
     }
 
@@ -15,10 +15,14 @@ const Products = (props) => {
         console.log(Type);
         setsortingType(Type);
     }
+    const [sortingCategory, setsortingCategory] = useState('All')
+    const sortingCategoryHandler = Type => {
+        console.log(Type);
+        setsortingCategory(Type);
+    }
 
     const rawData = props.itemDatas
     const filteredData = props.itemDatas.filter(itemdata => {
-        console.log(filtredCategory)
         if (filtredCategory == "") return true;
         if (itemdata.title.toLowerCase().includes("" + filtredCategory.toLowerCase())) {
             return true
@@ -48,8 +52,10 @@ const Products = (props) => {
     }
     return (<div>
         <div className="parent">
+            <div><ProductCategoriser SortingType={sortingCategory} onSortFuction={sortingCategoryHandler}/></div>
+
             <div><ProductSorter SortingType={sortingType} onSortFuction={sortingChangeHandler}/></div>
-            <div><ProductFilter sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/></div>
+            <div><ProductSearcher sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/></div>
         </div>
         {showableProduct()}
     < /div>)

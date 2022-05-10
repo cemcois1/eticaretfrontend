@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import "./ProductFilter.css"
+import "./ProductSearcher.css"
 
-const ProductFilter = (props) => {
+const ProductSearcher = (props) => {
     const [getSearchtext, setSearchtext] = useState("")
 
     const SetSearchtext = (value) => {
@@ -19,4 +19,4 @@ const ProductFilter = (props) => {
 
     </div>
 }
-export default ProductFilter
+export default ProductSearcher
