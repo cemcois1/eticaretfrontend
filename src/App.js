@@ -7,6 +7,7 @@ import Cart from "./Components/Cart/Cart";
 const DUMMY_PRODUCT_DATAS = [
     {
         id: "1",
+        productType: "PC",
         imageRef: './Components/src/images/Asus X515JA.jpg',
         title: "Asus X515JA 10.Nesil Core i5 1035G1-8Gb-256Gb Ssd-15.6inc-W11",
         category: "Asus",
@@ -20,7 +21,9 @@ const DUMMY_PRODUCT_DATAS = [
     },
     {
         id: "2",
+        productType: "PC",
         imageRef: "src/images/AsusTuf.jpg",
+
         title: "Asus Tuf Gaming 15 10.Nesil Core i5 10300H-8Gb-512Gb Ssd-15.6inc-Gtx1650 4Gb-W10",
         amount: 13.340,
         category: "Asus",
@@ -33,6 +36,7 @@ const DUMMY_PRODUCT_DATAS = [
     },
     {
         id: "3",
+        productType: "PC",
         imageRef: "src/images/Monster Abra A5.jpg",
         title: "Monster Abra A5 V17.2.3 Intel Core I5 11400H 16GB 500GB SSD RTX3050Ti Freedos 15.6'' FHD ABRA A5 V17.2.3",
         amount: 14.629,
@@ -47,6 +51,7 @@ const DUMMY_PRODUCT_DATAS = [
     },
     {
         id: "4",
+        productType: "PC",
         imageRef: "src/images/Monster300hz.jpg",
         title: "Monster Tulpar T7 V25.1.2 Intel Core I7 11800h 16gb 1tb Ssd Rtx3060 Freedos 17.3'' Fhd 300 Hz",
         amount: 23.499,
@@ -61,6 +66,7 @@ const DUMMY_PRODUCT_DATAS = [
     },
     {
         id: "5",
+        productType: "PC",
         imageRef: "src/images/Monster3060.jpg",
         title: "Monster Tulpar T7 V20.4.1 Intel Core I7 11800H 16GB 1TB SSD RTX3060 Windows 11 17.3'' FHD",
         amount: 23.844,
@@ -75,6 +81,7 @@ const DUMMY_PRODUCT_DATAS = [
     },
     {
         id: "6",
+        productType: "PC",
         imageRef: "src/images/AppleMacbookAir.jpg",
         title: "Apple Macbook Air 13'' M1 8gb 256gb Ssd Uzay Grisi MGN63TU/A",
         amount: 14.297,
@@ -89,6 +96,7 @@ const DUMMY_PRODUCT_DATAS = [
     },
     {
         id: "7",
+        productType: "PC",
         imageRef: "src/images/AppleMacbookAir16gb.jpg",
         title: "Apple Macbook Pro 14\" M1 Pro 16 gb 512gb Ssd Gümüş MKGR3TU/A",
         amount: 30.335,
@@ -135,7 +143,7 @@ const App = () => {
         <div>
             <div className="parent">
                 <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/></div>
-                <div className="child2"><Cart orders={getOrders}/></div>
+                <div className="child2"><Cart itemDatas={DUMMY_PRODUCT_DATAS} orders={getOrders}/></div>
 
 
             </div>

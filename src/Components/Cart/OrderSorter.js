@@ -1,7 +1,7 @@
 import Order from "./Order/Order";
 import React, {useState} from "react";
 
-const OrderSorter = (props) => {
+const OrderList  = (props) => {
 
     const displayOrders = () => {
 
@@ -18,4 +18,4 @@ const OrderSorter = (props) => {
     </div>
 }
 
-export default OrderSorter
+export default OrderList

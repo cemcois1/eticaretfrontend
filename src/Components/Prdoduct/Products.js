@@ -4,27 +4,26 @@ import ProductFilter from "./ProductFilter";
 import ProductSorter from "./ProductSorter";
 
 const Products = (props) => {
-    const [filtredCategory, setFiltredCategory] = useState('All')
-    const [sortingType, setsortingType] = useState('None')
+    const [filtredCategory, setFiltredCategory] = useState('')
     const filterChangeHandler = Category => {
         console.log(Category);
         setFiltredCategory(Category);
     }
+
+    const [sortingType, setsortingType] = useState('None')
     const sortingChangeHandler = Type => {
         console.log(Type);
         setsortingType(Type);
     }
 
-
     const rawData = props.itemDatas
-
     const filteredData = props.itemDatas.filter(itemdata => {
-        if (filtredCategory == "All") return true;
-        if (itemdata.category == filtredCategory) {
+        console.log(filtredCategory)
+        if (filtredCategory == "") return true;
+        if (itemdata.title.toLowerCase().includes("" + filtredCategory.toLowerCase())) {
             return true
         }
     })
-
     const sortedData = () => {
         if (sortingType === "None") {
         }
@@ -36,11 +35,11 @@ const Products = (props) => {
         }
         return filteredData
     }
-
     const showedDatas = sortedData()
     const showableProduct = () => showedDatas.map((itemData) => {
         return (
-            <div key={itemData.id}><Product AddtoCart={props.onItemAdded} id={itemData.id} title={itemData.title} price={itemData.amount}
+            <div key={itemData.id}><Product AddtoCart={props.onItemAdded} id={itemData.id} title={itemData.title}
+                                            price={itemData.amount}
                                             imageRef={itemData.imageRef}/>
             </div>)
     });
@@ -49,8 +48,8 @@ const Products = (props) => {
     }
     return (<div>
         <div className="parent">
-        <div><ProductSorter SortingType={sortingType} onSortFuction={sortingChangeHandler}/></div>
-        <div><ProductFilter sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/></div>
+            <div><ProductSorter SortingType={sortingType} onSortFuction={sortingChangeHandler}/></div>
+            <div><ProductFilter sellectedCategory={filtredCategory} onChangeFilter={filterChangeHandler}/></div>
         </div>
         {showableProduct()}
     < /div>)
