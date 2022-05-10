@@ -1,13 +1,13 @@
 import Order from "./Order/Order";
-import OrderArray from "./OrderArray";
 import React, {useState} from "react";
 
-const OrderSorter = () => {
+const OrderSorter = (props) => {
 
     const displayOrders = () => {
-        return  OrderArray.map((orderDesc) => {
+
+        return  props.data.map((orderDesc) => {
             return (<div key={orderDesc.key}>
-                <Order/>
+                <Order counter={orderDesc.counter} productkey={orderDesc.key}/>
             </div>)
         })
     }

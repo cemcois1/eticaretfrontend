@@ -1,10 +1,12 @@
 import CartHeader from "./CartHeader";
-import OrderSorter from "./OrderSorter";
+import OrderList from "./OrderSorter";
 import "./Cart.css"
-const Cart = () => {
+
+const Cart = (props) => {
+    console.log(props.orders)
     return <div className="Cart">
         <CartHeader/>
-        <OrderSorter/>
+        <OrderList data={props.orders}/>
         <button>Öde</button>
     </div>
 }

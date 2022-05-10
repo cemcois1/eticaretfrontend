@@ -36,12 +36,11 @@ const Products = (props) => {
         }
         return filteredData
     }
-    console.log(sortedData())
 
     const showedDatas = sortedData()
     const showableProduct = () => showedDatas.map((itemData) => {
         return (
-            <div key={itemData.id}><Product id={itemData.id} title={itemData.title} price={itemData.amount}
+            <div key={itemData.id}><Product AddtoCart={props.onItemAdded} id={itemData.id} title={itemData.title} price={itemData.amount}
                                             imageRef={itemData.imageRef}/>
             </div>)
     });

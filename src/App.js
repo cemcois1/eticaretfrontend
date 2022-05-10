@@ -1,8 +1,7 @@
 import logo from './logo.svg';
-import './App.css';
-import Products from './Components/Products'
-import "./Components/Products.css"
-import React from "react";
+import Products from './Components/Prdoduct/Products'
+import "./Components/Prdoduct/Products.css"
+import React, {useState} from "react";
 import Cart from "./Components/Cart/Cart";
 
 const DUMMY_PRODUCT_DATAS = [
@@ -108,12 +107,35 @@ const DUMMY_PRODUCT_DATAS = [
 
 const App = () => {
 
+    const [getOrders, setOrders] = useState([{key: 1, counter: 1}])
+    const AppendToOrder = (itemkey) => {
+        const sameorder = getOrders.filter((item) => {
+            if (item.key == itemkey) {
+                return true;
+            } else {
+                return false;
+            }
 
+        })
+
+        if (sameorder.length > 0) {
+            getOrders.map(item => {
+                if (item.key == itemkey) {
+                    item.counter += 1
+                    setOrders(getOrders => [...getOrders])
+                }
+                return item;
+            })
+
+        } else {
+            setOrders(getOrders => [...getOrders, {key: parseInt(itemkey), counter: 1}])
+        }
+    }
     return (
         <div>
             <div className="parent">
-                <div className="child1"><Products itemDatas={DUMMY_PRODUCT_DATAS}/></div>
-                <div className="child2"><Cart/></div>
+                <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/></div>
+                <div className="child2"><Cart orders={getOrders}/></div>
 
 
             </div>
