@@ -3,9 +3,12 @@ import OrderList from "./OrderList";
 import "./Cart.css"
 
 const Cart = (props) => {
+    const HandleRemoving = value => {
+                props.RemoveOrder(value)
+    }
     return <div className="Cart">
         <CartHeader/>
-        <OrderList data={props.orders}/>
+        <OrderList HandleRemoving={HandleRemoving} cartInfo={props.itemDatas} data={props.orders}/>
         <button>Öde</button>
     </div>
 }

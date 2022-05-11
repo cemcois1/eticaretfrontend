@@ -4,6 +4,7 @@ import "./Product.css"
 const Product = (props) => {
 
     const AddToCart = _ => {
+        console.log("add to cart")
         props.AddtoCart(props.id)
     }
 

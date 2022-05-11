@@ -3,3 +3,14 @@
     background-color: #282c34;
     border-radius: 10px;
 }
+
+.CartText {
+    padding: 0.5rem;
+}
+
+.listeleYatay {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+}

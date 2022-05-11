@@ -158,6 +158,7 @@ const App = () => {
 
         if (sameorder.length > 0) {
             getOrders.map(item => {
+
                 if (item.key == itemkey) {
                     item.counter += 1
                     setOrders(getOrders => [...getOrders])
@@ -169,11 +170,33 @@ const App = () => {
             setOrders(getOrders => [...getOrders, {key: parseInt(itemkey), counter: 1}])
         }
     }
+    const RemoveOrder = (itemkey) => {
+
+        console.log("Delete order   " + itemkey)
+        {
+
+            const datam = getOrders.map(item => {
+                console.log(itemkey == item.key)
+                if (itemkey == item.key) {
+                    item.counter -= 1
+                    console.log("item sayısı azaldı")
+                }
+                return item
+            })
+
+            console.log(datam)
+            setOrders(eskidatam => (datam))
+
+
+        }
+
+    }
     return (
         <div>
             <div className="parent">
                 <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/></div>
-                <div className="child2"><Cart itemDatas={DUMMY_PRODUCT_DATAS} orders={getOrders}/></div>
+                <div className="child2"><Cart RemoveOrder={RemoveOrder} itemDatas={DUMMY_PRODUCT_DATAS}
+                                              orders={getOrders}/></div>
 
 
             </div>
