@@ -3,6 +3,7 @@ import Products from './Components/Prdoduct/Products'
 import "./Components/Prdoduct/Products.css"
 import React, {useState} from "react";
 import Cart from "./Components/Cart/Cart";
+import Account from "./Components/Account/Account";
 
 const DUMMY_PRODUCT_DATAS = [
     {
@@ -195,8 +196,11 @@ const App = () => {
         <div>
             <div className="parent">
                 <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/></div>
-                <div className="child2"><Cart RemoveOrder={RemoveOrder} itemDatas={DUMMY_PRODUCT_DATAS}
-                                              orders={getOrders}/></div>
+                <div className="child2">
+                    <Cart RemoveOrder={RemoveOrder} itemDatas={DUMMY_PRODUCT_DATAS}
+                          orders={getOrders}/>
+                    <Account />
+                </div>
 
 
             </div>

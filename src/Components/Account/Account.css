@@ -1,0 +1,23 @@
+.horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.horizontalChild{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.horizontalMiddleSideChild{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixleft {
+    margin: 1.0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
