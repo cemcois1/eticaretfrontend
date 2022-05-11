@@ -11,9 +11,9 @@ const ProductCategoriser = (props) => {
         <div>
             <label>Type </label>
             <select value={props.sellectedCategory} onChange={dropDownChangeHandler}>
-                <option value='None'> None</option>
-                <option value='expensive to cheap'>Expensive to cheap</option>
-                <option value='cheap to expensive'>Cheap to expensive</option>
+                <option value='All'> All</option>
+                <option value='TV'>TV</option>
+                <option value='PC'>PC</option>
             </select>
 
         </div>

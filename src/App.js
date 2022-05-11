@@ -110,6 +110,36 @@ const DUMMY_PRODUCT_DATAS = [
             "Bu ürün indirim kampanyasına dahil değildir.\n" +
             "Bir ürün, birden fazla satıcı tarafından satılabilir. Birden fazla satıcı tarafından satışa sunulan ürünlerin satıcıları ürün için belirledikleri fiyata, satıcı puanlarına, teslimat statülerine, ürünlerdeki promosyonlara, kargonun bedava olup olmamasına ve ürünlerin hızlı teslimat ile teslim edilip edilememesine, ürünlerin stok ve kategorileri bilgilerine göre sıralanmaktadır."
     },
+    {
+        id: "8",
+        productType: "TV",
+        imageRef: './Components/src/images/Asus X515JA.jpg',
+        title: "Tüplü Televizyon",
+        category: "Simens",
+        amount: 250,
+        description: "Tüplü televizyon\n" +
+            " \n" +
+            "\n" +
+            "Zor taşınabilirlik. Zahmetli .\n" +
+            "Açması yarım saat sürer" +
+            " \n" +
+            "İster iş ister oyun için olsun, cızırtılı görüntü sağlar."
+    },
+    {
+        id: "9",
+        productType: "TV",
+        imageRef: './Components/src/images/Asus X515JA.jpg',
+        title: "Cafcaflı Televizyon",
+        category: "LG",
+        amount: 25000,
+        description: "Cafcaflı televizyon\n" +
+            " \n" +
+            "\n" +
+            "İnce. zahmetsiz .\n" +
+            "siz daha söylemeden açılır" +
+            " \n" +
+            "RGB IŞıQlı MıŞıQlı. 3500 DpS QuMMaNDa"
+    }
 ]
 
 

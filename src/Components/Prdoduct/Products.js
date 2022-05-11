@@ -22,12 +22,24 @@ const Products = (props) => {
     }
 
     const rawData = props.itemDatas
-    const filteredData = props.itemDatas.filter(itemdata => {
+    const filteredforCategoriser = props.itemDatas.filter(itemdata => {
+
+            if (sortingCategory == "All") return true;
+            if (itemdata.productType.toLowerCase().includes("" + sortingCategory.toLowerCase())) {
+                return true;
+            }
+            return false;
+        }
+    )
+
+    const filteredData = filteredforCategoriser.filter(itemdata => {
         if (filtredCategory == "") return true;
         if (itemdata.title.toLowerCase().includes("" + filtredCategory.toLowerCase())) {
             return true
         }
     })
+
+
     const sortedData = () => {
         if (sortingType === "None") {
         }
@@ -47,9 +59,6 @@ const Products = (props) => {
                                             imageRef={itemData.imageRef}/>
             </div>)
     });
-    if (props.itemDatas.length === 0) {
-        return <h2 className='expenses-list__fallback'>No expenses found</h2>;
-    }
     return (<div>
         <div className="parent">
             <div><ProductCategoriser SortingType={sortingCategory} onSortFuction={sortingCategoryHandler}/></div>
