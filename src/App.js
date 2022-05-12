@@ -4,6 +4,7 @@ import "./Components/Prdoduct/Products.css"
 import React, {useState} from "react";
 import Cart from "./Components/Cart/Cart";
 import Account from "./Components/Account/Account";
+import Payment from "./Components/Payment/Payment";
 
 const DUMMY_PRODUCT_DATAS = [
     {
@@ -193,19 +194,23 @@ const App = () => {
 
     }
     const [getpaymentOpened, setgetpaymentOpened] = useState(false)
-    console.log(getpaymentOpened)
+    const isPayable = event => {
+        console.log(getOrders.length)
+        if (getOrders.length > 0) {
+            setgetpaymentOpened(!getpaymentOpened)
+        }
+    }
     return (
         <div>
             {getpaymentOpened ?
-                <div> this is payment screen
-                    <button value={false} onClick={event => setgetpaymentOpened(false)}/>
-                </div>
+                <Payment setgetpaymentOpened={isPayable}/>
+
                 :
                 <div className="parent">
                     <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/>
                     </div>
                     <div className="child2">
-                        <Cart OpenpaymentScreen={setgetpaymentOpened} RemoveOrder={RemoveOrder}
+                        <Cart OpenpaymentScreen={isPayable} RemoveOrder={RemoveOrder}
                               itemDatas={DUMMY_PRODUCT_DATAS}
                               orders={getOrders}/>
                         <Account/>

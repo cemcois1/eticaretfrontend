@@ -1,12 +1,13 @@
 import "./Account.css"
 import {useState} from "react";
 
+const UsersData = [{ad: "Cemal Can Yıldırım", mail: "cemal", password: "111",},
+    {ad: "Bekir Onur Ayçiçek", mail: "bekir", password: "222"},
+    {ad: "Umut Sarıdede", mail: "umut", password: "1313"}]
 const Account = () => {
     const [getuserloginSuccesed, setuserloginSuccesed] = useState(false)
 
-    const UsersData = [{ad: "Cemal Can Yıldırım", mail: "cemal", password: "111",},
-        {ad: "Bekir Onur Ayçiçek", mail: "bekir", password: "222"},
-        {ad:"Umut Sarıdede",mail:"umut",password: "1313"}]
+
     const verifyAccount = data => {
         const targetData = UsersData.filter(userdata => {
             if (userdata.mail == data.mail && userdata.password == data.password) {
@@ -45,14 +46,14 @@ const Account = () => {
 
 
         setuserloginSuccesed(accountData().length > 0 ? true : false)
-        console.log(accountData().map(item=>item.ad))
+        console.log(accountData().map(item => item.ad))
     }
 
     return <div>
         {getuserloginSuccesed ?
             <div className="horizontal">
                 <div>
-                    <label className="horizontalChild">{accountData().map(item=>item.ad)} hoşgeldiniz</label>
+                    <label className="horizontalChild">{accountData().map(item => item.ad)} hoşgeldiniz</label>
                     <div className="horizontalMiddleSideChild">
 
                         <button className="" onClick={() => setuserloginSuccesed(false)}> çıkış yap
@@ -63,13 +64,13 @@ const Account = () => {
 
             : <div className="horizontal">
                 <div className="horizontalChild">
-                    <div className="horizontalMiddleSideChild"> Login </div>
+                    <div className="horizontalMiddleSideChild"> Login</div>
                     <div>Mail <input value={getmailInfo} placeholder="example@mail.com" onChange={mailChanged}
                                      className=""
                                      type="text"/></div>
                     <div>Password <input value={getpasword} onChange={passwordChanged} type="password"
                                          placeholder="Enter your password"/></div>
-                    <div  className="button">
+                    <div className="button">
                         <button onClick={TryLogin}>Login</button>
                     </div>
                 </div>
@@ -81,5 +82,4 @@ const Account = () => {
 
     </div>
 }
-
 export default Account;
