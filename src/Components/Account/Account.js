@@ -14,8 +14,6 @@ const Account = () => {
             }
             return false
         })
-        console.log(targetData)
-
         return targetData
     }
 
@@ -40,7 +38,6 @@ const Account = () => {
             console.log("User Not Found")
         } else {
         }
-        console.log(data)
         return data
 
     }

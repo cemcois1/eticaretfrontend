@@ -7,13 +7,16 @@ const OrderList = (props) => {
     }
     const displayOrders = () => {
         return props.data.map((orderDesc) => {
-            console.log(orderDesc.counter)
-            if (orderDesc.counter < 1)return
-                console.log(orderDesc)
-            return (<div key={orderDesc.key}>
-                <Order HandleRemoving={HandleRemoving} cartInfo={props.cartInfo} counter={orderDesc.counter}
-                       productkey={orderDesc.key}/>
-            </div>)
+            if (orderDesc.counter < 1) {
+                return <div></div>
+            } else {
+                return (<div key={orderDesc.key}>
+                        <Order HandleRemoving={HandleRemoving} cartInfo={props.cartInfo} counter={orderDesc.counter}
+                               productkey={orderDesc.key}/>
+                    </div>
+
+                )
+            }
         })
     }
     return <div>

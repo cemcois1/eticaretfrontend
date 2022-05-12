@@ -146,7 +146,7 @@ const DUMMY_PRODUCT_DATAS = [
 
 const App = () => {
 
-    const [getOrders, setOrders] = useState([{key: 1, counter: 1}])
+    const [getOrders, setOrders] = useState([])
     const AppendToOrder = (itemkey) => {
         const sameorder = getOrders.filter((item) => {
             if (item.key == itemkey) {
@@ -192,18 +192,27 @@ const App = () => {
         }
 
     }
+    const [getpaymentOpened, setgetpaymentOpened] = useState(false)
+    console.log(getpaymentOpened)
     return (
         <div>
-            <div className="parent">
-                <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/></div>
-                <div className="child2">
-                    <Cart RemoveOrder={RemoveOrder} itemDatas={DUMMY_PRODUCT_DATAS}
-                          orders={getOrders}/>
-                    <Account />
+            {getpaymentOpened ?
+                <div> this is payment screen
+                    <button value={false} onClick={event => setgetpaymentOpened(false)}/>
                 </div>
+                :
+                <div className="parent">
+                    <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/>
+                    </div>
+                    <div className="child2">
+                        <Cart OpenpaymentScreen={setgetpaymentOpened} RemoveOrder={RemoveOrder}
+                              itemDatas={DUMMY_PRODUCT_DATAS}
+                              orders={getOrders}/>
+                        <Account/>
+                    </div>
+                </div>
+            }
 
-
-            </div>
         </div>
     )
         ;
