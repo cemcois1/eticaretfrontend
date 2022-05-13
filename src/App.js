@@ -12,7 +12,7 @@ const DUMMY_PRODUCT_DATAS = [
         imageRef: './Components/src/images/Asus X515JA.jpg',
         title: "Asus X515JA 10.Nesil Core i5 1035G1-8Gb-256Gb Ssd-15.6inc-W11",
         category: "Asus",
-        amount: 6.999,
+        amount: 6999,
         description: "ASUS X515JA-EJ2629W NOTEBOOK\n" +
             " \n" +
             "\n" +
@@ -26,7 +26,7 @@ const DUMMY_PRODUCT_DATAS = [
         imageRef: "src/images/AsusTuf.jpg",
 
         title: "Asus Tuf Gaming 15 10.Nesil Core i5 10300H-8Gb-512Gb Ssd-15.6inc-Gtx1650 4Gb-W10",
-        amount: 13.340,
+        amount: 13340,
         category: "Asus",
         description: "ASUS FX506LHB-HN323W NOTEBOOK\n" +
             " \n" +
@@ -40,7 +40,7 @@ const DUMMY_PRODUCT_DATAS = [
         productType: "PC",
         imageRef: "src/images/Monster Abra A5.jpg",
         title: "Monster Abra A5 V17.2.3 Intel Core I5 11400H 16GB 500GB SSD RTX3050Ti Freedos 15.6'' FHD ABRA A5 V17.2.3",
-        amount: 14.629,
+        amount: 14629,
         category: "Monster",
         description: "Monster Abra A5 V17.2.3 Intel Core I5 11400H 16GB 500GB SSD RTX3050Ti Freedos 15.6'' FHD\n" +
             "Bu üründen en fazla 2 adet sipariş verilebilir. 2 adetin üzerindeki siparişleri Trendyol iptal etme hakkını saklı tutar.\n" +
@@ -55,7 +55,7 @@ const DUMMY_PRODUCT_DATAS = [
         productType: "PC",
         imageRef: "src/images/Monster300hz.jpg",
         title: "Monster Tulpar T7 V25.1.2 Intel Core I7 11800h 16gb 1tb Ssd Rtx3060 Freedos 17.3'' Fhd 300 Hz",
-        amount: 23.499,
+        amount: 23499,
         category: "Monster",
         description: "Monster Tulpar T7 V25.1.2 Intel Core I7 11800h 16gb 1tb Ssd Rtx3060 Freedos 17.3'' Fhd 300 Hz\n" +
             "Bu üründen en fazla 2 adet sipariş verilebilir. 2 adetin üzerindeki siparişleri Trendyol iptal etme hakkını saklı tutar.\n" +
@@ -70,7 +70,7 @@ const DUMMY_PRODUCT_DATAS = [
         productType: "PC",
         imageRef: "src/images/Monster3060.jpg",
         title: "Monster Tulpar T7 V20.4.1 Intel Core I7 11800H 16GB 1TB SSD RTX3060 Windows 11 17.3'' FHD",
-        amount: 23.844,
+        amount: 23844,
         category: "Monster",
         description: "Monster Tulpar T7 V20.4.1 Intel Core I7 11800H 16GB 1TB SSD RTX3060 Windows 11 17.3'' FHD\n" +
             "Bu üründen en fazla 2 adet sipariş verilebilir. 2 adetin üzerindeki siparişleri Trendyol iptal etme hakkını saklı tutar.\n" +
@@ -85,7 +85,7 @@ const DUMMY_PRODUCT_DATAS = [
         productType: "PC",
         imageRef: "src/images/AppleMacbookAir.jpg",
         title: "Apple Macbook Air 13'' M1 8gb 256gb Ssd Uzay Grisi MGN63TU/A",
-        amount: 14.297,
+        amount: 14297,
         category: "Apple",
         description: "Apple Macbook Air 13'' M1 8gb 256gb Ssd Uzay Grisi\n" +
             "Bu üründen en fazla 10 adet sipariş verilebilir. 10 adetin üzerindeki siparişleri Trendyol iptal etme hakkını saklı tutar.\n" +
@@ -100,7 +100,7 @@ const DUMMY_PRODUCT_DATAS = [
         productType: "PC",
         imageRef: "src/images/AppleMacbookAir16gb.jpg",
         title: "Apple Macbook Pro 14\" M1 Pro 16 gb 512gb Ssd Gümüş MKGR3TU/A",
-        amount: 30.335,
+        amount: 30335,
         category: "Apple",
         description: "Apple Macbook Pro 14\" M1 Pro 16 gb 512gb Ssd Gümüş\n" +
             "MacBook Pro 14 inç Apple M1 Pro chip with 8?core CPU and 14?core GPU, 512GB SSD - Silver\n" +
@@ -143,8 +143,44 @@ const DUMMY_PRODUCT_DATAS = [
     }
 ]
 
-
+const UsersData = [{ad: "Cemal Can Yıldırım", mail: "cemal", password: "111",},
+    {ad: "Bekir Onur Ayçiçek", mail: "bekir", password: "222"},
+    {ad: "Umut Sarıdede", mail: "umut", password: "1313"}]
 const App = () => {
+    const [getuserloginSuccesed, setuserloginSuccesed] = useState(false)
+    const [getmailInfo, setmailInfo] = useState("")
+    const mailChanged = (event) => {
+        setmailInfo(event.target.value)
+    }
+    const [getpasword, setpassword] = useState("")
+    const passwordChanged = (event) => {
+        setpassword(event.target.value)
+    }
+
+    const getData = () => {
+        return {
+            mail: getmailInfo,
+            password: getpasword
+        }
+    }
+    const accountData = () => {
+        const data = verifyAccount(getData())
+        if (data.length < 1) {
+            console.log("User Not Found")
+        } else {
+        }
+        return data
+
+    }
+    const verifyAccount = data => {
+        const targetData = UsersData.filter(userdata => {
+            if (userdata.mail == data.mail && userdata.password == data.password) {
+                return true;
+            }
+            return false
+        })
+        return targetData
+    }
 
     const [getCardNumber, setCardNumber] = useState("")
     const ChangeCardInfo = event => {
@@ -221,7 +257,7 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment getCardNumber={getCardNumber} ChangeCardInfo={ChangeCardInfo}  setgetpaymentOpened={isPayable}/>
+                <Payment verifyAccount={verifyAccount} getData={getData} getCardNumber={getCardNumber} ChangeCardInfo={ChangeCardInfo}  setgetpaymentOpened={isPayable}/>
 
                 :
                 <div className="parent">
@@ -231,7 +267,7 @@ const App = () => {
                         <Cart OpenpaymentScreen={isPayable} RemoveOrder={RemoveOrder}
                               itemDatas={DUMMY_PRODUCT_DATAS}
                               orders={getOrders}/>
-                        <Account/>
+                        <Account  passwordChanged={passwordChanged} getpasword={getpasword} getmailInfo={getmailInfo} mailChanged={mailChanged} accountData={accountData} setuserloginSuccesed={setuserloginSuccesed } getuserloginSuccesed={getuserloginSuccesed}/>
                     </div>
                 </div>
             }

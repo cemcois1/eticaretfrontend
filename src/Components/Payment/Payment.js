@@ -3,7 +3,18 @@ import Account, {} from "../Account/Account";
 
 const Payment = props => {
 
+    console.log()
     return <div>
+
+        {props.getData().mail !== "" ?
+            <div>
+                <h1>worked</h1>
+                <div>{props.getData().mail} is mail adress</div>
+                <div>{props.getData().password} is password </div>
+            </div>
+            :
+            <h1>verify failed</h1>
+        }
         <button value={false} onClick={event => props.setgetpaymentOpened(false)}> geri dön</button>
         <h1>this is payment screen</h1>
         <div>
