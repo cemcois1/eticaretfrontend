@@ -1,22 +1,39 @@
 import React, {useState} from "react";
 import Account, {} from "../Account/Account";
 
+
 const Payment = props => {
+    const SendMail = () => {
+        if (getMailSendable){
+            console.log("true")
 
-    console.log()
+        }else{
+            console.log("false")
+
+        }
+    }
+    const [getMailSendable, setMailSendable] = useState(false)
+    const Pay = () => {
+        SendMail()
+    }
+    //console.log(props.getData())
+    //props.getData().mail !== ""
     return <div>
-
+        <button value={false} onClick={event => props.setgetpaymentOpened(false)}> geri dön</button>
+        <h1>this is payment screen</h1>
         {props.getData().mail !== "" ?
             <div>
-                <h1>worked</h1>
-                <div>{props.getData().mail} is mail adress</div>
-                <div>{props.getData().password} is password </div>
+                <div>
+                    <label>Send Payment data to my mail adress{ /*props.getData().mail*/} </label>
+                    <input onChange={event => {
+                        setMailSendable(true)
+                    }} value={true}  type="checkbox"/>
+                </div>
+                <div>{props.getData().ad} is password</div>
             </div>
             :
             <h1>verify failed</h1>
         }
-        <button value={false} onClick={event => props.setgetpaymentOpened(false)}> geri dön</button>
-        <h1>this is payment screen</h1>
         <div>
             <div>Kart numarası : {props.getCardNumber}</div>
             <input value={props.getCardNumber} onChange={props.ChangeCardInfo} id="ccn" type="tel" inputMode="numeric"
@@ -31,8 +48,9 @@ const Payment = props => {
 
         </div>
         <div>
-            <div>Ödenecek tutar</div>
-            <button>Öde</button>
+            <div>Ödenecek tutar : {props.totalMoney} ₺</div>
+            <button onClick={Pay}>Öde</button>
+
         </div>
     </div>
 }

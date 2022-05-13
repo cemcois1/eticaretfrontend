@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import Cart from "./Components/Cart/Cart";
 import Account from "./Components/Account/Account";
 import Payment from "./Components/Payment/Payment";
+
 const DUMMY_PRODUCT_DATAS = [
     {
         id: "1",
@@ -156,7 +157,24 @@ const App = () => {
     const passwordChanged = (event) => {
         setpassword(event.target.value)
     }
+    const [gettotalMoney, settotalMoney] = useState(0)
+    const updateTotalMoney = () => {
+        let totalmoney = 0
+        getOrders.map(order => {
+            //(order.key)
+            //(itemdata.amount)
+            (DUMMY_PRODUCT_DATAS.filter(itemdata => itemdata.id == order.key).map(item => {
+                if (item.amount > 0) {
+                    totalmoney += item.amount * order.counter
 
+                }
+            }))
+            settotalMoney(totalmoney)
+        })
+        // props.orders.map(order => console.log(order.amount)).map(amount => totalmoney += amount)
+
+
+    }
     const getData = () => {
         return {
             mail: getmailInfo,
@@ -227,26 +245,18 @@ const App = () => {
         }
     }
     const RemoveOrder = (itemkey) => {
-
-        console.log("Delete order   " + itemkey)
-        {
-
-            const datam = getOrders.map(item => {
-                console.log(itemkey == item.key)
-                if (itemkey == item.key) {
-                    item.counter -= 1
-                    console.log("item sayısı azaldı")
-                }
-                return item
-            })
-
-            console.log(datam)
-            setOrders(eskidatam => (datam))
-
-
-        }
-
+        const datam = getOrders.map(item => {
+            console.log(itemkey == item.key)
+            if (itemkey == item.key) {
+                item.counter -= 1
+                console.log("item sayısı azaldı")
+            }
+            return item
+        })
+        console.log(datam)
+        setOrders(eskidatam => (datam))
     }
+
     const [getpaymentOpened, setgetpaymentOpened] = useState(false)
     const isPayable = event => {
         console.log(getOrders.length)
@@ -257,17 +267,24 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment verifyAccount={verifyAccount} getData={getData} getCardNumber={getCardNumber} ChangeCardInfo={ChangeCardInfo}  setgetpaymentOpened={isPayable}/>
+                <Payment totalMoney={gettotalMoney} verifyAccount={verifyAccount} getData={getData}
+                         getCardNumber={getCardNumber}
+                         ChangeCardInfo={ChangeCardInfo} setgetpaymentOpened={isPayable}/>
 
                 :
                 <div className="parent">
                     <div className="child1"><Products onItemAdded={AppendToOrder} itemDatas={DUMMY_PRODUCT_DATAS}/>
                     </div>
                     <div className="child2">
-                        <Cart OpenpaymentScreen={isPayable} RemoveOrder={RemoveOrder}
+                        <Cart gettotalMoney={gettotalMoney} settotalMoney={settotalMoney}
+                              updateTotalMoney={updateTotalMoney} OpenpaymentScreen={isPayable}
+                              RemoveOrder={RemoveOrder}
                               itemDatas={DUMMY_PRODUCT_DATAS}
                               orders={getOrders}/>
-                        <Account  passwordChanged={passwordChanged} getpasword={getpasword} getmailInfo={getmailInfo} mailChanged={mailChanged} accountData={accountData} setuserloginSuccesed={setuserloginSuccesed } getuserloginSuccesed={getuserloginSuccesed}/>
+                        <Account passwordChanged={passwordChanged} getpasword={getpasword} getmailInfo={getmailInfo}
+                                 mailChanged={mailChanged} accountData={accountData}
+                                 setuserloginSuccesed={setuserloginSuccesed}
+                                 getuserloginSuccesed={getuserloginSuccesed}/>
                     </div>
                 </div>
             }
