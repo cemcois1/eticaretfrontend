@@ -3,18 +3,29 @@ import Account, {} from "../Account/Account";
 
 
 const Payment = props => {
+    let cartData = {
+        cartNumber: "",
+        cartOwnerName: "",
+        SecurityCode: "",
+        LastDate: ""
+    }
     const SendMail = () => {
-        if (getMailSendable){
+        cartData.cartNumber = props.getCardNumber
+        console.log("Mail gönder")
+        if (getMailSendable) {
             console.log("true")
 
-        }else{
+        } else {
             console.log("false")
 
         }
     }
     const [getMailSendable, setMailSendable] = useState(false)
     const Pay = () => {
-        SendMail()
+        if (props.getCardNumber.length > 0 &&  cartData.cartOwnerName.length > 1)
+            SendMail()
+        console.log("Payment Finished")
+        props.ClearAllData()
     }
     //console.log(props.getData())
     //props.getData().mail !== ""
@@ -27,7 +38,7 @@ const Payment = props => {
                     <label>Send Payment data to my mail adress{ /*props.getData().mail*/} </label>
                     <input onChange={event => {
                         setMailSendable(true)
-                    }} value={true}  type="checkbox"/>
+                    }} value={true} type="checkbox"/>
                 </div>
                 <div>{props.getData().ad} is password</div>
             </div>
@@ -40,9 +51,9 @@ const Payment = props => {
                    pattern="[0-9\s]{13,19}"
                    placeholder="xxxx xxxx xxxx xxxx"/>
             <div>Kart üstündeki isim</div>
-            <input type={"text"}/>
+            <input  onChange={event => cartData.cartOwnerName = event.target.value } type={"text"}/>
             <div>Son kullanma tarihi</div>
-            <input type={"text"}/>
+            <input onChange={event => cartData.LastDate = event.target.value + ""} type={"text"}/>
             <div>güvenlik kodu</div>
             <input type={"text"}/>
 

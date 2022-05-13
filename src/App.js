@@ -200,6 +200,11 @@ const App = () => {
         return targetData
     }
 
+    const ClearAllData = () => {
+        setuserloginSuccesed(false)
+
+    }
+
     const [getCardNumber, setCardNumber] = useState("")
     const ChangeCardInfo = event => {
         if (event.target.value.length < getCardNumber.length) {
@@ -259,7 +264,7 @@ const App = () => {
 
     const [getpaymentOpened, setgetpaymentOpened] = useState(false)
     const isPayable = event => {
-        console.log(getOrders.length)
+        console.log(getOrders.length+"  Order Length")
         if (getOrders.length > 0) {
             setgetpaymentOpened(!getpaymentOpened)
         }
@@ -267,7 +272,7 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment totalMoney={gettotalMoney} verifyAccount={verifyAccount} getData={getData}
+                <Payment ClearAllData={ClearAllData} totalMoney={gettotalMoney} verifyAccount={verifyAccount} getData={getData}
                          getCardNumber={getCardNumber}
                          ChangeCardInfo={ChangeCardInfo} setgetpaymentOpened={isPayable}/>
 
