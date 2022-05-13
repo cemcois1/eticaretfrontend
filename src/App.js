@@ -5,7 +5,6 @@ import React, {useState} from "react";
 import Cart from "./Components/Cart/Cart";
 import Account from "./Components/Account/Account";
 import Payment from "./Components/Payment/Payment";
-
 const DUMMY_PRODUCT_DATAS = [
     {
         id: "1",
@@ -147,6 +146,25 @@ const DUMMY_PRODUCT_DATAS = [
 
 const App = () => {
 
+    const [getCardNumber, setCardNumber] = useState("")
+    const ChangeCardInfo = event => {
+        if (event.target.value.length < getCardNumber.length) {
+            setCardNumber(event.target.value)
+            return
+        }
+        if (event.target.value.length > 19) {
+            console.log("19 haneden fazla yazamazsın")
+            return;
+        }
+
+        if (event.target.value.length == 4 || event.target.value.length == 9 || event.target.value.length == 14) {
+            setCardNumber(event.target.value + "-")
+        } else {
+            setCardNumber(event.target.value)
+        }
+
+    }
+
     const [getOrders, setOrders] = useState([])
     const AppendToOrder = (itemkey) => {
         const sameorder = getOrders.filter((item) => {
@@ -203,7 +221,7 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment setgetpaymentOpened={isPayable}/>
+                <Payment getCardNumber={getCardNumber} ChangeCardInfo={ChangeCardInfo}  setgetpaymentOpened={isPayable}/>
 
                 :
                 <div className="parent">

@@ -4,6 +4,7 @@ import React from "react";
 const OrderList = (props) => {
     const HandleRemoving = value => {
         props.HandleRemoving(value)
+
     }
     const displayOrders = () => {
         return props.data.map((orderDesc) => {
@@ -11,7 +12,8 @@ const OrderList = (props) => {
                 return <div></div>
             } else {
                 return (<div key={orderDesc.key}>
-                        <Order HandleRemoving={HandleRemoving} cartInfo={props.cartInfo} counter={orderDesc.counter}
+                        <Order updateTotalMoney={props.updateTotalMoney} HandleRemoving={HandleRemoving}
+                               cartInfo={props.cartInfo} counter={orderDesc.counter}
                                productkey={orderDesc.key}/>
                     </div>
 
