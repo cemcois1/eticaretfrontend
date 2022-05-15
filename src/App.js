@@ -157,7 +157,7 @@ const DUMMY_PRODUCT_DATAS = [
 const UsersData = [{ad: "Cemal Can Yıldırım", mail: "Cemalcan_yildirim10@hotmail.com", password: "111",},
     {ad: "Bekir Onur Ayçiçek", mail: "bekir", password: "222"},
     {ad: "Umut Sarıdede", mail: "umut", password: "1313"},
-    {ad:"Berk", mail: "berkferoto@gmail.com",password: "111"}]
+    {ad:"Berk toğrul", mail: "berkferoto@gmail.com",password: "111"}]
 const App = () => {
     const [getuserloginSuccesed, setuserloginSuccesed] = useState(false)
     const [getmailInfo, setmailInfo] = useState("")
