@@ -8,13 +8,13 @@ const Account = props => {
 
 
         props.setuserloginSuccesed(props.accountData().length > 0 ? true : false)
-        console.log(props.accountData().map(item => item.ad))
+        props.accountData().map(item => props.setName(item.ad))
+
     }
 
     return <div>
         {props.getuserloginSuccesed ?
             <div className="horizontal">
-                <div>
                     <label className="horizontalChild">{props.accountData().map(item => item.ad)} hoşgeldiniz</label>
                     <div className="horizontalMiddleSideChild">
 
@@ -24,7 +24,6 @@ const Account = props => {
                         }}> çıkış yap
                         </button>
                     </div>
-                </div>
             </div>
 
             : <div className="horizontal">

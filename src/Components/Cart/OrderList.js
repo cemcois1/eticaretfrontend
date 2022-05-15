@@ -21,7 +21,7 @@ const OrderList = (props) => {
             }
         })
     }
-    return <div>
+    return <div className="App">
         {displayOrders()}
     </div>
 }

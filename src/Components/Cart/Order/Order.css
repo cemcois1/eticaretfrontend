@@ -1,8 +1,10 @@
 .Order {
     margin:  0.5rem;
     padding: 0.5rem;
-    background-color: #9c27b0;
+    background-color: #B3E8E5;
     border-radius: 10px;
+    border-color: #282c34;
+
 }
 
 .CartText {

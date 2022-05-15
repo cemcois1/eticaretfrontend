@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import Products from './Components/Prdoduct/Products'
-import "./Components/Prdoduct/Products.css"
+import Products from './Components/Prouduct/Products'
+import "./Components/Prouduct/Products.css"
 import React, {useState} from "react";
 import Cart from "./Components/Cart/Cart";
 import Account from "./Components/Account/Account";
@@ -154,14 +154,17 @@ const DUMMY_PRODUCT_DATAS = [
     }
 ]
 
-const UsersData = [{ad: "Cemal Can Yıldırım", mail: "cemal", password: "111",},
+const UsersData = [{ad: "Cemal Can Yıldırım", mail: "Cemalcan_yildirim10@hotmail.com", password: "111",},
     {ad: "Bekir Onur Ayçiçek", mail: "bekir", password: "222"},
-    {ad: "Umut Sarıdede", mail: "umut", password: "1313"}]
+    {ad: "Umut Sarıdede", mail: "umut", password: "1313"},
+    {ad:"Berk", mail: "berkferoto@gmail.com",password: "111"}]
 const App = () => {
     const [getuserloginSuccesed, setuserloginSuccesed] = useState(false)
     const [getmailInfo, setmailInfo] = useState("")
+    const [getName, setName] = useState("")
     const mailChanged = (event) => {
         setmailInfo(event.target.value)
+        console.log(getmailInfo)
     }
     const [getpasword, setpassword] = useState("")
     const passwordChanged = (event) => {
@@ -187,7 +190,9 @@ const App = () => {
     }
     const getData = () => {
         return {
+            name: getName,
             mail: getmailInfo,
+            money: gettotalMoney,
             password: getpasword
         }
     }
@@ -200,6 +205,7 @@ const App = () => {
         return data
 
     }
+    const Data = getData()
     const verifyAccount = data => {
         const targetData = UsersData.filter(userdata => {
             if (userdata.mail == data.mail && userdata.password == data.password) {
@@ -282,7 +288,7 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment getuserloginSuccesed={getuserloginSuccesed} ClearAllData={ClearAllData}
+                <Payment getmailInfo={getmailInfo} getUserName={getName} getuserloginSuccesed={getuserloginSuccesed} ClearAllData={ClearAllData}
                          totalMoney={gettotalMoney} verifyAccount={verifyAccount}
                          getData={getData}
                          getCardNumber={getCardNumber}
@@ -298,7 +304,7 @@ const App = () => {
                               RemoveOrder={RemoveOrder}
                               itemDatas={DUMMY_PRODUCT_DATAS}
                               orders={getOrders}/>
-                        <Account setmailInfo={setmailInfo} passwordChanged={passwordChanged} getpasword={getpasword}
+                        <Account setName={setName} setmailInfo={setmailInfo} passwordChanged={passwordChanged} getpasword={getpasword}
                                  getmailInfo={getmailInfo}
                                  mailChanged={mailChanged} accountData={accountData}
                                  setuserloginSuccesed={setuserloginSuccesed}

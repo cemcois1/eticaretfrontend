@@ -1,4 +1,9 @@
 import React, {useState} from "react";
+import './Payment.css'
+import emailjs from "@emailjs/browser"
+import ServiceID from "../PrivateKeys/ServiceID";
+import templateID from "../PrivateKeys/TemplateID";
+import publicKey from "../PrivateKeys/PublicKey";
 
 const Payment = props => {
     let cartData = {
@@ -8,11 +13,27 @@ const Payment = props => {
         LastDate: ""
     }
     const SendMail = () => {
+        console.log(props.getmailInfo)
+        const templateParams = {
+            to_mail: props.getmailInfo,
+            to_name: "Müşteri",
+            from_name: 'Cemal Can Yıldırım',
+            message: ' bizden baya bir alışveriş yaptınız. Alışveriş tutarı:' + props.totalMoney + ' ₺',
+            reply_to: 'reply_to'
+        };
+
+        emailjs.send(ServiceID, templateID, templateParams, publicKey)
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+
+
         cartData.cartNumber = props.getCardNumber
         console.log("Mail gönder")
         if (getMailSendable) {
             console.log("true")
-
         } else {
             console.log("false")
 
@@ -20,20 +41,25 @@ const Payment = props => {
     }
     const [getMailSendable, setMailSendable] = useState(false)
     const Pay = () => {
-        if (props.getCardNumber.length > 0 && cartData.cartOwnerName.length > 1)
+        console.log(props.getCardNumber.length + " card-number")
+        if (props.getCardNumber.length > 0) {
             SendMail()
-        console.log("Payment Finished")
-        setTimeout(() => {
-            props.setgetpaymentOpened(false)
-            props.ClearAllData()
-        }, 1000);
+            setTimeout(() => {
+                props.setgetpaymentOpened(false)
+                props.ClearAllData()
+            }, 1000);
+            console.log("Payment Finished")
+        } else {
+            console.log("Payment Failed")
+        }
+
     }
     //console.log(props.getData())
     //props.getData().mail !== ""
 
     return <div>
         <button value={false} onClick={event => props.setgetpaymentOpened(false)}> icon</button>
-        {props.getuserloginSuccesed && props.getData().mail !== "" ?
+        <div>{props.getuserloginSuccesed && props.getData().mail !== "" ?
             <div>
                 <div>
                     <label>Send Payment data to my mail adress{ /*props.getData().mail*/} </label>
@@ -46,10 +72,11 @@ const Payment = props => {
             :
             <h1>log in to receive your invoice in the mail</h1>
         }
+        </div>
         <div>
             <div>Kart numarası : {props.getCardNumber}</div>
-            <input value={props.getCardNumber} onChange={props.ChangeCardInfo} id="ccn" type="tel" inputMode="numeric"
-                   pattern="[0-9\s]{13,19}"
+            <input value={props.getCardNumber} onChange={props.ChangeCardInfo} id="ccn" type="tel"
+                   inputMode="numeric"
                    placeholder="xxxx xxxx xxxx xxxx"/>
             <div>Kart üstündeki isim</div>
             <input onChange={event => cartData.cartOwnerName = event.target.value} type={"text"}/>
@@ -62,7 +89,6 @@ const Payment = props => {
         <div>
             <div>Ödenecek tutar : {props.totalMoney} ₺</div>
             <button onClick={Pay}>Öde</button>
-
         </div>
     </div>
 }
