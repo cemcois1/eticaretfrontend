@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/Components/PrivateKeys/PublicKey.js
+src/Components/PrivateKeys/PublicKey.js
+src/Components/PrivateKeys/ServiceID.js
+src/Components/PrivateKeys/TemplateID.js
