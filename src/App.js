@@ -13,8 +13,8 @@ import image3 from './Components/src/images/Monster300hz.jpg'
 import image4 from './Components/src/images/Monster3060.jpg'
 import image5 from './Components/src/images/AppleMacbookAir.jpg'
 import image6 from './Components/src/images/AppleMacbookAir16gb.jpg'
-import image7 from './Components/src/images/Asus X515JA.jpg'
-import image8 from './Components/src/images/Asus X515JA.jpg'
+import image7 from './Components/src/images/tüplüTv.jpg'
+import image8 from './Components/src/images/cafcaflıTv.jpg'
 
 const DUMMY_PRODUCT_DATAS = [
     {
