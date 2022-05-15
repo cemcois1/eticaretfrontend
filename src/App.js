@@ -6,11 +6,21 @@ import Cart from "./Components/Cart/Cart";
 import Account from "./Components/Account/Account";
 import Payment from "./Components/Payment/Payment";
 
+import image0 from './Components/src/images/Asus X515JA.jpg'
+import image1 from './Components/src/images/AsusTuf.jpg'
+import image2 from './Components/src/images/Monster Abra A5.jpg'
+import image3 from './Components/src/images/Monster300hz.jpg'
+import image4 from './Components/src/images/Monster3060.jpg'
+import image5 from './Components/src/images/AppleMacbookAir.jpg'
+import image6 from './Components/src/images/AppleMacbookAir16gb.jpg'
+import image7 from './Components/src/images/Asus X515JA.jpg'
+import image8 from './Components/src/images/Asus X515JA.jpg'
+
 const DUMMY_PRODUCT_DATAS = [
     {
         id: "1",
         productType: "PC",
-        imageRef: './Components/src/images/Asus X515JA.jpg',
+        imageRef: image0,
         title: "Asus X515JA 10.Nesil Core i5 1035G1-8Gb-256Gb Ssd-15.6inc-W11",
         category: "Asus",
         amount: 6999,
@@ -24,7 +34,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "2",
         productType: "PC",
-        imageRef: "src/images/AsusTuf.jpg",
+        imageRef: image1,
 
         title: "Asus Tuf Gaming 15 10.Nesil Core i5 10300H-8Gb-512Gb Ssd-15.6inc-Gtx1650 4Gb-W10",
         amount: 13340,
@@ -39,7 +49,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "3",
         productType: "PC",
-        imageRef: "src/images/Monster Abra A5.jpg",
+        imageRef: image2,
         title: "Monster Abra A5 V17.2.3 Intel Core I5 11400H 16GB 500GB SSD RTX3050Ti Freedos 15.6'' FHD ABRA A5 V17.2.3",
         amount: 14629,
         category: "Monster",
@@ -54,7 +64,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "4",
         productType: "PC",
-        imageRef: "src/images/Monster300hz.jpg",
+        imageRef: image3,
         title: "Monster Tulpar T7 V25.1.2 Intel Core I7 11800h 16gb 1tb Ssd Rtx3060 Freedos 17.3'' Fhd 300 Hz",
         amount: 23499,
         category: "Monster",
@@ -69,7 +79,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "5",
         productType: "PC",
-        imageRef: "src/images/Monster3060.jpg",
+        imageRef: image4,
         title: "Monster Tulpar T7 V20.4.1 Intel Core I7 11800H 16GB 1TB SSD RTX3060 Windows 11 17.3'' FHD",
         amount: 23844,
         category: "Monster",
@@ -84,7 +94,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "6",
         productType: "PC",
-        imageRef: "src/images/AppleMacbookAir.jpg",
+        imageRef: image5,
         title: "Apple Macbook Air 13'' M1 8gb 256gb Ssd Uzay Grisi MGN63TU/A",
         amount: 14297,
         category: "Apple",
@@ -99,7 +109,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "7",
         productType: "PC",
-        imageRef: "src/images/AppleMacbookAir16gb.jpg",
+        imageRef: image6,
         title: "Apple Macbook Pro 14\" M1 Pro 16 gb 512gb Ssd Gümüş MKGR3TU/A",
         amount: 30335,
         category: "Apple",
@@ -115,7 +125,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "8",
         productType: "TV",
-        imageRef: './Components/src/images/Asus X515JA.jpg',
+        imageRef: image7,
         title: "Tüplü Televizyon",
         category: "Simens",
         amount: 250,
@@ -130,7 +140,7 @@ const DUMMY_PRODUCT_DATAS = [
     {
         id: "9",
         productType: "TV",
-        imageRef: './Components/src/images/Asus X515JA.jpg',
+        imageRef: image8,
         title: "Cafcaflı Televizyon",
         category: "LG",
         amount: 25000,
@@ -272,7 +282,8 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment getuserloginSuccesed={getuserloginSuccesed} ClearAllData={ClearAllData} totalMoney={gettotalMoney} verifyAccount={verifyAccount}
+                <Payment getuserloginSuccesed={getuserloginSuccesed} ClearAllData={ClearAllData}
+                         totalMoney={gettotalMoney} verifyAccount={verifyAccount}
                          getData={getData}
                          getCardNumber={getCardNumber}
                          ChangeCardInfo={ChangeCardInfo} setgetpaymentOpened={isPayable}/>
@@ -287,7 +298,8 @@ const App = () => {
                               RemoveOrder={RemoveOrder}
                               itemDatas={DUMMY_PRODUCT_DATAS}
                               orders={getOrders}/>
-                        <Account setmailInfo={setmailInfo} passwordChanged={passwordChanged} getpasword={getpasword} getmailInfo={getmailInfo}
+                        <Account setmailInfo={setmailInfo} passwordChanged={passwordChanged} getpasword={getpasword}
+                                 getmailInfo={getmailInfo}
                                  mailChanged={mailChanged} accountData={accountData}
                                  setuserloginSuccesed={setuserloginSuccesed}
                                  getuserloginSuccesed={getuserloginSuccesed}/>

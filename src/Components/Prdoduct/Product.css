@@ -13,19 +13,25 @@
 .product__description {
     display: block;
     justify-content: flex-end;
-    font-size:20px;
-    height:100px;
+    font-size: 20px;
+    height: 100px;
 }
-.Image{
-    background: #282c34;
-    height:100px ;
 
+.Image {
+    flex: 1;
+    width: 50px;
+    height: 50px;
+    min-height: 300px;
+    min-width: 300px;
+    resizeMode: 'contain';
 }
+
 .product__description_header {
     color: #3a3a3a;
     font-size: 1rem;
     color: white;
 }
+
 .product-item h2 {
     color: #3a3a3a;
     font-size: 1rem;

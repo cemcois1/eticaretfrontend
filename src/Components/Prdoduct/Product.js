@@ -11,7 +11,7 @@ const Product = (props) => {
     return <div className="product">
 
         <div className="Image">
-
+            <img src={props.imageRef}/>
         </div>
         <div className="product__description">
             <div className="product__description_header"> {props.title}</div>
