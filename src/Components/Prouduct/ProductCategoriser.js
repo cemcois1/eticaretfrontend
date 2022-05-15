@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ProductCategoriser.css'
 const ProductCategoriser = (props) => {
 
     const dropDownChangeHandler = (event) => {
@@ -8,7 +8,6 @@ const ProductCategoriser = (props) => {
     }
 
     return <div>
-        <div>
             <label>Type </label>
             <select value={props.sellectedCategory} onChange={dropDownChangeHandler}>
                 <option value='All'> All</option>
@@ -16,7 +15,6 @@ const ProductCategoriser = (props) => {
                 <option value='PC'>PC</option>
             </select>
 
-        </div>
     </div>
 
 

@@ -1,10 +1,11 @@
 .products {
     padding: 0.5rem;
     background-color: #FFFFFF;
+    width: 70%;
     min-height: 600px;
 }
 .parent{
-    display: flex;
+    background-color: #61dafb;
 }
 .child1{
     flex: 2;
