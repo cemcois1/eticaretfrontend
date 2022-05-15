@@ -18,7 +18,10 @@ const Account = props => {
                     <label className="horizontalChild">{props.accountData().map(item => item.ad)} hoşgeldiniz</label>
                     <div className="horizontalMiddleSideChild">
 
-                        <button className="" onClick={() => props.setuserloginSuccesed(false)}> çıkış yap
+                        <button className="" onClick={() => {
+                            props.setuserloginSuccesed(false)
+                            props.setmailInfo("")
+                        }}> çıkış yap
                         </button>
                     </div>
                 </div>

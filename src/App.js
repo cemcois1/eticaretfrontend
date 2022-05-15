@@ -201,8 +201,8 @@ const App = () => {
     }
 
     const ClearAllData = () => {
-        setuserloginSuccesed(false)
-
+        settotalMoney(0)
+        setOrders([])
     }
 
     const [getCardNumber, setCardNumber] = useState("")
@@ -264,7 +264,7 @@ const App = () => {
 
     const [getpaymentOpened, setgetpaymentOpened] = useState(false)
     const isPayable = event => {
-        console.log(getOrders.length+"  Order Length")
+        console.log(getOrders.length + "  Order Length")
         if (getOrders.length > 0) {
             setgetpaymentOpened(!getpaymentOpened)
         }
@@ -272,7 +272,8 @@ const App = () => {
     return (
         <div>
             {getpaymentOpened ?
-                <Payment ClearAllData={ClearAllData} totalMoney={gettotalMoney} verifyAccount={verifyAccount} getData={getData}
+                <Payment getuserloginSuccesed={getuserloginSuccesed} ClearAllData={ClearAllData} totalMoney={gettotalMoney} verifyAccount={verifyAccount}
+                         getData={getData}
                          getCardNumber={getCardNumber}
                          ChangeCardInfo={ChangeCardInfo} setgetpaymentOpened={isPayable}/>
 
@@ -286,7 +287,7 @@ const App = () => {
                               RemoveOrder={RemoveOrder}
                               itemDatas={DUMMY_PRODUCT_DATAS}
                               orders={getOrders}/>
-                        <Account passwordChanged={passwordChanged} getpasword={getpasword} getmailInfo={getmailInfo}
+                        <Account setmailInfo={setmailInfo} passwordChanged={passwordChanged} getpasword={getpasword} getmailInfo={getmailInfo}
                                  mailChanged={mailChanged} accountData={accountData}
                                  setuserloginSuccesed={setuserloginSuccesed}
                                  getuserloginSuccesed={getuserloginSuccesed}/>

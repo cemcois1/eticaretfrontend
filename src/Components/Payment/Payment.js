@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import Account, {} from "../Account/Account";
-
 
 const Payment = props => {
     let cartData = {
@@ -22,17 +20,20 @@ const Payment = props => {
     }
     const [getMailSendable, setMailSendable] = useState(false)
     const Pay = () => {
-        if (props.getCardNumber.length > 0 &&  cartData.cartOwnerName.length > 1)
+        if (props.getCardNumber.length > 0 && cartData.cartOwnerName.length > 1)
             SendMail()
         console.log("Payment Finished")
-        props.ClearAllData()
+        setTimeout(() => {
+            props.setgetpaymentOpened(false)
+            props.ClearAllData()
+        }, 1000);
     }
     //console.log(props.getData())
     //props.getData().mail !== ""
+
     return <div>
-        <button value={false} onClick={event => props.setgetpaymentOpened(false)}> geri dön</button>
-        <h1>this is payment screen</h1>
-        {props.getData().mail !== "" ?
+        <button value={false} onClick={event => props.setgetpaymentOpened(false)}> icon</button>
+        {props.getuserloginSuccesed && props.getData().mail !== "" ?
             <div>
                 <div>
                     <label>Send Payment data to my mail adress{ /*props.getData().mail*/} </label>
@@ -43,7 +44,7 @@ const Payment = props => {
                 <div>{props.getData().ad} is password</div>
             </div>
             :
-            <h1>verify failed</h1>
+            <h1>log in to receive your invoice in the mail</h1>
         }
         <div>
             <div>Kart numarası : {props.getCardNumber}</div>
@@ -51,7 +52,7 @@ const Payment = props => {
                    pattern="[0-9\s]{13,19}"
                    placeholder="xxxx xxxx xxxx xxxx"/>
             <div>Kart üstündeki isim</div>
-            <input  onChange={event => cartData.cartOwnerName = event.target.value } type={"text"}/>
+            <input onChange={event => cartData.cartOwnerName = event.target.value} type={"text"}/>
             <div>Son kullanma tarihi</div>
             <input onChange={event => cartData.LastDate = event.target.value + ""} type={"text"}/>
             <div>güvenlik kodu</div>
