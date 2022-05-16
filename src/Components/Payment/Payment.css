@@ -1,0 +1,29 @@
+.FormHolder{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    flex-direction: column;
+    height: 800px;
+
+}
+.center {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    border: 3px solid black;
+    padding: 10px;
+
+}
+.centeriseItems{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.PaymentPixelSize{
+}
+.CenterItem{
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}

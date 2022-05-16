@@ -2,7 +2,11 @@
     padding: 0.5rem;
     background-color: #FFFFFF;
     width: 70%;
-    min-height: 600px;
+
+}
+.MainBackground{
+    background-color: #61dafb;
+    height: 45rem;
 }
 .parent{
     background-color: #61dafb;

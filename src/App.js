@@ -286,7 +286,7 @@ const App = () => {
         }
     }
     return (
-        <div>
+        <div className="MainBackground">
             {getpaymentOpened ?
                 <Payment getmailInfo={getmailInfo} getUserName={getName} getuserloginSuccesed={getuserloginSuccesed} ClearAllData={ClearAllData}
                          totalMoney={gettotalMoney} verifyAccount={verifyAccount}
